@@ -13,8 +13,8 @@ extern NSString * const SecondTickNotification;
 
 @interface POTimer : NSObject
 +(POTimer *)sharedInstance;
-@property (nonatomic, assign) NSInteger *minutes;
-@property (nonatomic, assign) NSInteger *seconds;
+@property (nonatomic, assign) NSInteger minutes;
+@property (nonatomic, assign) NSInteger seconds;
 @property (nonatomic, assign) BOOL isOn;
 
 -(void)startTimer;

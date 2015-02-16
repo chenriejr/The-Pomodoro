@@ -10,4 +10,9 @@
 
 @interface PORoundsViewController : UIViewController
 
+@property (nonatomic, assign) NSInteger currentRound;
+@property (nonatomic, strong)UITableView *tableView;
+
+
+
 @end
