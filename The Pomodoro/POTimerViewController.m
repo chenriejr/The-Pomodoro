@@ -18,6 +18,8 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
 }
+- (IBAction)timerButtonPressed:(id)sender {
+}
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
