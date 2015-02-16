@@ -3,6 +3,8 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6247"/>
+        <capability name="Alignment constraints to the first baseline" minToolsVersion="6.0"/>
+        <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="POTimerViewController">
@@ -17,21 +19,19 @@
             <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="S1I-PR-2YL">
-                    <rect key="frame" x="94" y="104" width="412" height="63"/>
-                    <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="57"/>
-                    <color key="textColor" red="1" green="0.5" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                    <nil key="highlightedColor"/>
-                </label>
-                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nlS-FN-AWN">
+                <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nlS-FN-AWN">
                     <rect key="frame" x="217" y="314" width="167" height="30"/>
                     <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="29"/>
                     <state key="normal" title="Start Round">
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
                 </button>
-                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SRr-Wr-tsD">
+                <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SRr-Wr-tsD">
                     <rect key="frame" x="217" y="314" width="167" height="30"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="167" id="SU2-XG-Rh5"/>
+                        <constraint firstAttribute="height" constant="30" id="Tal-Kf-hIu"/>
+                    </constraints>
                     <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="29"/>
                     <state key="normal" title="Start Round">
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -40,8 +40,29 @@
                         <action selector="timerButtonPressed:" destination="-1" eventType="touchUpInside" id="K4e-7J-idM"/>
                     </connections>
                 </button>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="S1I-PR-2YL">
+                    <rect key="frame" x="150" y="106" width="300" height="63"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="63" id="ufT-xp-d3d"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="57"/>
+                    <color key="textColor" red="1" green="0.5" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstItem="SRr-Wr-tsD" firstAttribute="firstBaseline" secondItem="nlS-FN-AWN" secondAttribute="baseline" id="1ae-ne-ihS"/>
+                <constraint firstItem="S1I-PR-2YL" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="106" id="6Jd-aN-HSh"/>
+                <constraint firstItem="SRr-Wr-tsD" firstAttribute="leading" secondItem="nlS-FN-AWN" secondAttribute="leading" id="85l-XA-cIH"/>
+                <constraint firstItem="S1I-PR-2YL" firstAttribute="centerX" secondItem="SRr-Wr-tsD" secondAttribute="centerX" id="CcN-xh-hqX"/>
+                <constraint firstItem="SRr-Wr-tsD" firstAttribute="trailing" secondItem="nlS-FN-AWN" secondAttribute="trailing" id="R3Y-nf-1n4"/>
+                <constraint firstItem="SRr-Wr-tsD" firstAttribute="baseline" secondItem="nlS-FN-AWN" secondAttribute="firstBaseline" id="W8F-9Y-v8l"/>
+                <constraint firstAttribute="bottom" secondItem="SRr-Wr-tsD" secondAttribute="bottom" constant="256" id="ehR-m8-5fg"/>
+                <constraint firstItem="SRr-Wr-tsD" firstAttribute="top" secondItem="nlS-FN-AWN" secondAttribute="top" id="jgu-wJ-TvM"/>
+                <constraint firstItem="SRr-Wr-tsD" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="mfa-GK-uCp"/>
+                <constraint firstItem="S1I-PR-2YL" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="150" id="vun-QK-UtW"/>
+            </constraints>
         </view>
     </objects>
 </document>
