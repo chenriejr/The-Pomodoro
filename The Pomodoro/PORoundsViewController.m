@@ -23,7 +23,9 @@
     self.tableView = [[UITableView alloc]initWithFrame:self.view.bounds];
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
-    [self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:@"reuseID"];
+    [self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:@"focus"];
+    [self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:@"break"];
+
  
     [self.view addSubview:self.tableView];
     
@@ -34,16 +36,29 @@
 }
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
-    
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"reuseID"];
-    cell.textLabel.text = [NSString stringWithFormat: @"Round %ld - %@ minutes", (long)indexPath.row + 1, [self roundTimes][indexPath.row]];
+    if (indexPath.row % 2 == 0) {
+        
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"focus"];
+    cell.textLabel.text = [NSString stringWithFormat: @"Round %ld -  (Focus)  -   %@ minutes", (long)indexPath.row + 1, [self roundTimes][indexPath.row]];
+    cell.textLabel.font = [UIFont fontWithName:@"Futura" size:18.0];
     return cell;
+    }
+    else {
+        UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"break"];
+        cell.textLabel.text = [NSString stringWithFormat: @"Round %ld -  (Break)  -    %@ minutes", (long)indexPath.row + 1, [self roundTimes][indexPath.row]];
+        cell.textLabel.font = [UIFont fontWithName:@"Futura" size:18.0];
+        return cell;
+    }
 }
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     self.currentRound = indexPath.row;
     [self roundSelected];
     
+}
+
+-(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    return 56;
 }
 
 -(void)roundSelected{

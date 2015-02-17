@@ -30,13 +30,16 @@
     roundsViewController.tabBarItem.title = @"Rounds";
     roundsViewController.tabBarController.title = @"Pomodoro Rounds";
     
+    
     //Timer Tab
     timerViewController.tabBarItem.image = [UIImage imageNamed:@"time"];
     timerViewController.tabBarItem.title = @"Timer";
     
     //Create a Navigation Controller
     UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:tabBarController];
-
+    [navController.navigationBar setBarTintColor:[UIColor orangeColor]];
+    [navController.navigationBar setBarStyle:UIBarStyleBlack];
+    [navController.navigationBar setTranslucent:YES];
     
     
     

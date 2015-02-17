@@ -36,8 +36,7 @@ NSString * const SecondTickNotification = @"secondTick";
     [[NSNotificationCenter defaultCenter] postNotificationName:TimerCompleteNotification object:nil];
 }
 
--(void)decreaseSecond
-{
+-(void)decreaseSecond {
     if (self.seconds > 0)
     {
         self.seconds--;
@@ -55,9 +54,14 @@ NSString * const SecondTickNotification = @"secondTick";
     }
 }
 
--(void)isActive {
-    if (self.isOn == YES) {
+-(BOOL)isActive {
+    [NSObject cancelPreviousPerformRequestsWithTarget:self];
+    
+    if (self.isOn)
+    {
         [self decreaseSecond];
+        [self performSelector:@selector(isActive) withObject:nil afterDelay:1.0];
     }
-}
-@end
+    
+    return self.isOn;
+}@end
