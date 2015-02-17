@@ -39,15 +39,13 @@
     [POTimer sharedInstance].isOn = NO;
     self.pauseButton.enabled = NO;
     self.timerButton.enabled = YES;
-    //self.timerButton.titleLabel = @"Start";
 }
 
 - (IBAction)timerButtonPressed:(id)sender {
     self.timerButton.enabled = NO;
     [[POTimer sharedInstance] startTimer];
     self.pauseButton.enabled = YES;
-    
-    }
+}
 
 -(void)registerForNotifications {
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(updateTimerLabel) name:SecondTickNotification object:nil];
@@ -59,9 +57,7 @@
 
 
 -(void)updateTimerLabel {
-    //POTimerViewController *timerVC = [POTimerViewController new];
     self.timerLabel.text = [NSString stringWithFormat: @"%ld:%02ld", (long)[POTimer sharedInstance].minutes, (long)[POTimer sharedInstance].seconds];
-    //[self.navigationController pushViewController:timerVC animated:YES];
 }
 
 -(void)newRound{
@@ -73,14 +69,6 @@
     // Dispose of any resources that can be recreated.
 }
 
-/*
-#pragma mark - Navigation
 
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 @end

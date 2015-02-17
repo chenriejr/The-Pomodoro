@@ -11,7 +11,8 @@
 #import "POTimerViewController.h"
 
 @interface PORoundsViewController () <UITableViewDelegate, UITableViewDataSource>
-
+@property (nonatomic, strong) UILabel *timerCellLabel;
+@property (nonatomic, strong) NSIndexPath *cellIndexPath;
 @end
 
 @implementation PORoundsViewController
@@ -26,10 +27,10 @@
     [self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:@"focus"];
     [self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:@"break"];
     [[UINavigationBar appearance] setTintColor:[UIColor whiteColor]];
+    [self registerForNotifications];
 
  
     [self.view addSubview:self.tableView];
-    
 }
 
 -(NSArray *)roundTimes{
@@ -38,16 +39,17 @@
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     if (indexPath.row % 2 == 0) {
-        
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"focus"];
-    cell.textLabel.text = [NSString stringWithFormat: @"Round %ld                 %@ min", (long)indexPath.row + 1, [self roundTimes][indexPath.row]];
-    cell.textLabel.font = [UIFont fontWithName:@"Futura" size:18.0];
-    cell.imageView.image = [UIImage imageNamed:@"Worker"];
+        [self updateSubtitleText];
+        UITableViewCell *cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:@"focus"];
+        cell.textLabel.text = [NSString stringWithFormat: @"Round %ld                    %@ min", (long)indexPath.row + 1, [self roundTimes][indexPath.row], (long)[POTimer sharedInstance].minutes, (long)[POTimer sharedInstance].seconds];
+        cell.textLabel.font = [UIFont fontWithName:@"Futura" size:18.0];
+        cell.imageView.image = [UIImage imageNamed:@"Worker"];
+                
     return cell;
     }
     else {
         UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"break"];
-        cell.textLabel.text = [NSString stringWithFormat: @"Round %ld                 %@ min", (long)indexPath.row + 1, [self roundTimes][indexPath.row]];
+        cell.textLabel.text = [NSString stringWithFormat: @"Round %ld                    %@ min", (long)indexPath.row + 1, [self roundTimes][indexPath.row]];
         cell.textLabel.font = [UIFont fontWithName:@"Futura" size:18.0];
         cell.imageView.image = [UIImage imageNamed:@"Frisbee"];
         return cell;
@@ -57,6 +59,7 @@
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     [[POTimer sharedInstance] cancelTimer];
     self.currentRound = indexPath.row;
+    self.cellIndexPath = indexPath;
     [self roundSelected];
     self.tabBarController.selectedViewController = [self.tabBarController.viewControllers objectAtIndex:1];
     
@@ -75,13 +78,20 @@
     
 }
 
--(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    return [self roundTimes].count;
-    
+-(void)registerForNotifications {
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(updateSubtitleText) name:SecondTickNotification object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(roundComplete) name:TimerCompleteNotification object:nil];
+
 }
 
--(void)registerForNotifications{
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(roundComplete) name:TimerCompleteNotification object:nil];
+
+-(void)updateSubtitleText {
+    UITableViewCell *cell = [self.tableView cellForRowAtIndexPath:self.cellIndexPath];
+    cell.detailTextLabel.text = [NSString stringWithFormat: @"%ld:%02ld", (long)[POTimer sharedInstance].minutes, (long)[POTimer sharedInstance].seconds];
+}
+
+-(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
+    return [self roundTimes].count;
     
 }
 
