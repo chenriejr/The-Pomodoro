@@ -15,12 +15,13 @@
 
 @implementation POTimerViewController
 
--(instancetype)init {
-   self = [super init];
+-(instancetype)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil{
+    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         [self registerForNotifications];
     }
     return self;
+    
 }
 
 - (void)viewDidLoad {
@@ -30,16 +31,27 @@
 }
 
 - (IBAction)timerButtonPressed:(id)sender {
+    self.timerButton.enabled = NO;
+    [[POTimer sharedInstance] startTimer];
 }
 
 -(void)registerForNotifications {
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(updateTimerLabel) name:SecondTickNotification object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(newRound) name:currentRoundNotifciation object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(newRound) name:TimerCompleteNotification object:nil];
+
+    
 }
+
 
 -(void)updateTimerLabel {
     self.timerLabel.text = [NSString stringWithFormat: @"%ld:%02ld", (long)[POTimer sharedInstance].minutes, (long)[POTimer sharedInstance].seconds];
 }
 
+-(void)newRound{
+    [self updateTimerLabel];
+    self.timerButton.enabled = YES;
+}
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.

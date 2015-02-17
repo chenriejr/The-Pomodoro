@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
+static NSString *currentRoundNotifciation = @"currentRoundNotfication";
 extern NSString * const TimerCompleteNotification;
 extern NSString * const SecondTickNotification;
 

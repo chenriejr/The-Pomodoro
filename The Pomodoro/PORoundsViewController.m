@@ -48,6 +48,8 @@
     [POTimer sharedInstance].minutes = [[self roundTimes][self.currentRound]integerValue];
     [POTimer sharedInstance].seconds = 0;
     
+    [[NSNotificationCenter defaultCenter] postNotificationName:currentRoundNotifciation object:nil];
+    
     
 }
 
@@ -55,6 +57,25 @@
     return [self roundTimes].count;
     
 }
+
+-(void)registerForNotifications{
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(roundComplete) name:TimerCompleteNotification object:nil];
+    
+}
+
+-(void)unregisterForNotifications{
+    [[NSNotificationCenter defaultCenter]removeObserver:self];
+    
+}
+
+-(void)roundComplete{
+    if (self.currentRound < [self roundTimes].count-1) {
+        self.currentRound++;
+        [self.tableView selectRowAtIndexPath:[NSIndexPath indexPathForRow:self.currentRound inSection:0]animated:YES scrollPosition:UITableViewScrollPositionNone];
+        [self roundSelected];
+    }
+}
+
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
