@@ -10,6 +10,7 @@
 #import "POTimer.h"
 
 @interface POTimerViewController ()
+@property (weak, nonatomic) IBOutlet UIButton *pauseButton;
 
 @end
 
@@ -27,13 +28,26 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
-   
+    self.navigationController.title = @"Pomodoro Timer";
+    self.pauseButton.enabled = NO;
+    [self updateTimerLabel];
+
+
+}
+- (IBAction)pauseButtonPressed:(UIButton *)sender {
+    
+    [POTimer sharedInstance].isOn = NO;
+    self.pauseButton.enabled = NO;
+    self.timerButton.enabled = YES;
+    //self.timerButton.titleLabel = @"Start";
 }
 
 - (IBAction)timerButtonPressed:(id)sender {
     self.timerButton.enabled = NO;
     [[POTimer sharedInstance] startTimer];
-}
+    self.pauseButton.enabled = YES;
+    
+    }
 
 -(void)registerForNotifications {
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(updateTimerLabel) name:SecondTickNotification object:nil];

@@ -7,6 +7,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="POTimerViewController">
             <connections>
+                <outlet property="pauseButton" destination="muN-kv-7OC" id="fKt-iS-JUz"/>
                 <outlet property="timerButton" destination="nlS-FN-AWN" id="8vt-93-Zbu"/>
                 <outlet property="timerLabel" destination="S1I-PR-2YL" id="HEn-4z-den"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
@@ -34,7 +35,7 @@
                         <action selector="timerButtonPressed:" destination="-1" eventType="touchUpInside" id="Y13-eC-ulT"/>
                     </connections>
                 </button>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Time" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="S1I-PR-2YL">
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="S1I-PR-2YL">
                     <rect key="frame" x="150" y="108" width="300" height="63"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="300" id="lcx-3t-Aha"/>
@@ -47,11 +48,27 @@
                         <rect key="frame" x="69" y="119" width="243" height="63"/>
                     </variation>
                 </label>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="muN-kv-7OC">
+                    <rect key="frame" x="240" y="388" width="121" height="44"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="121" id="I5n-NH-1gY"/>
+                        <constraint firstAttribute="height" constant="44" id="Xoc-Oy-5Ob"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="22"/>
+                    <state key="normal" title="Pause">
+                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <connections>
+                        <action selector="pauseButtonPressed:" destination="-1" eventType="touchUpInside" id="5o8-P6-Nl5"/>
+                    </connections>
+                </button>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <constraints>
                 <constraint firstItem="nlS-FN-AWN" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="AOV-Wn-KEl"/>
+                <constraint firstItem="muN-kv-7OC" firstAttribute="top" secondItem="nlS-FN-AWN" secondAttribute="bottom" constant="44" id="DQy-Bk-2rm"/>
                 <constraint firstItem="S1I-PR-2YL" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="108" id="OGA-FY-80o"/>
+                <constraint firstItem="muN-kv-7OC" firstAttribute="centerX" secondItem="nlS-FN-AWN" secondAttribute="centerX" id="dfp-Ca-T6x"/>
                 <constraint firstAttribute="bottom" secondItem="nlS-FN-AWN" secondAttribute="bottom" constant="256" id="mrg-Fq-kVp"/>
                 <constraint firstItem="nlS-FN-AWN" firstAttribute="centerX" secondItem="S1I-PR-2YL" secondAttribute="centerX" id="uz1-gj-UfY"/>
             </constraints>

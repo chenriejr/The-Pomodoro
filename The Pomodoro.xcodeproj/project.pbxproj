@@ -11,6 +11,7 @@
 		233F7F791A9299FE00BF366C /* POTimerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 233F7F771A9299FE00BF366C /* POTimerViewController.xib */; };
 		233F7F7C1A929A1000BF366C /* PORoundsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 233F7F7B1A929A1000BF366C /* PORoundsViewController.m */; };
 		233F7F7F1A92A02500BF366C /* POTimer.m in Sources */ = {isa = PBXBuildFile; fileRef = 233F7F7E1A92A02500BF366C /* POTimer.m */; };
+		6A07E3A21A93E85000DC51BC /* POAppearanceController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A07E3A11A93E85000DC51BC /* POAppearanceController.m */; };
 		7141B2E6193DBDFD0084F9F1 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7141B2E5193DBDFD0084F9F1 /* Foundation.framework */; };
 		7141B2E8193DBDFD0084F9F1 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7141B2E7193DBDFD0084F9F1 /* CoreGraphics.framework */; };
 		7141B2EA193DBDFD0084F9F1 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7141B2E9193DBDFD0084F9F1 /* UIKit.framework */; };
@@ -43,6 +44,8 @@
 		233F7F7B1A929A1000BF366C /* PORoundsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PORoundsViewController.m; sourceTree = "<group>"; };
 		233F7F7D1A92A02500BF366C /* POTimer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = POTimer.h; sourceTree = "<group>"; };
 		233F7F7E1A92A02500BF366C /* POTimer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = POTimer.m; sourceTree = "<group>"; };
+		6A07E3A01A93E85000DC51BC /* POAppearanceController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = POAppearanceController.h; sourceTree = "<group>"; };
+		6A07E3A11A93E85000DC51BC /* POAppearanceController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = POAppearanceController.m; sourceTree = "<group>"; };
 		7141B2E2193DBDFD0084F9F1 /* The Pomodoro.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "The Pomodoro.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		7141B2E5193DBDFD0084F9F1 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		7141B2E7193DBDFD0084F9F1 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -141,6 +144,8 @@
 			children = (
 				7141B2F4193DBDFD0084F9F1 /* POAppDelegate.h */,
 				7141B2F5193DBDFD0084F9F1 /* POAppDelegate.m */,
+				6A07E3A01A93E85000DC51BC /* POAppearanceController.h */,
+				6A07E3A11A93E85000DC51BC /* POAppearanceController.m */,
 				6ACD49191A92CE3100F25455 /* Rounds */,
 				6ACD49181A92CE2200F25455 /* Timer */,
 				7141B2F7193DBDFD0084F9F1 /* Images.xcassets */,
@@ -275,6 +280,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6A07E3A21A93E85000DC51BC /* POAppearanceController.m in Sources */,
 				233F7F7C1A929A1000BF366C /* PORoundsViewController.m in Sources */,
 				233F7F781A9299FE00BF366C /* POTimerViewController.m in Sources */,
 				233F7F7F1A92A02500BF366C /* POTimer.m in Sources */,

@@ -25,6 +25,7 @@
     self.tableView.dataSource = self;
     [self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:@"focus"];
     [self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:@"break"];
+    [[UINavigationBar appearance] setTintColor:[UIColor whiteColor]];
 
  
     [self.view addSubview:self.tableView];
@@ -39,26 +40,30 @@
     if (indexPath.row % 2 == 0) {
         
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"focus"];
-    cell.textLabel.text = [NSString stringWithFormat: @"Round %ld -  (Focus)  -   %@ minutes", (long)indexPath.row + 1, [self roundTimes][indexPath.row]];
+    cell.textLabel.text = [NSString stringWithFormat: @"Round %ld                 %@ min", (long)indexPath.row + 1, [self roundTimes][indexPath.row]];
     cell.textLabel.font = [UIFont fontWithName:@"Futura" size:18.0];
+    cell.imageView.image = [UIImage imageNamed:@"Worker"];
     return cell;
     }
     else {
         UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"break"];
-        cell.textLabel.text = [NSString stringWithFormat: @"Round %ld -  (Break)  -    %@ minutes", (long)indexPath.row + 1, [self roundTimes][indexPath.row]];
+        cell.textLabel.text = [NSString stringWithFormat: @"Round %ld                 %@ min", (long)indexPath.row + 1, [self roundTimes][indexPath.row]];
         cell.textLabel.font = [UIFont fontWithName:@"Futura" size:18.0];
+        cell.imageView.image = [UIImage imageNamed:@"Frisbee"];
         return cell;
     }
 }
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    [[POTimer sharedInstance] cancelTimer];
     self.currentRound = indexPath.row;
     [self roundSelected];
+    self.tabBarController.selectedViewController = [self.tabBarController.viewControllers objectAtIndex:1];
     
 }
 
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    return 56;
+    return 56.5;
 }
 
 -(void)roundSelected{

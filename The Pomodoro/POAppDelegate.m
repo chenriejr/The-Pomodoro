@@ -9,6 +9,7 @@
 #import "POAppDelegate.h"
 #import "POTimerViewController.h"
 #import "PORoundsViewController.h"
+#import "POAppearanceController.h"
 
 @implementation POAppDelegate
 
@@ -37,16 +38,9 @@
     
     //Create a Navigation Controller
     UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:tabBarController];
-    [navController.navigationBar setBarTintColor:[UIColor orangeColor]];
-    [navController.navigationBar setBarStyle:UIBarStyleBlack];
-    [navController.navigationBar setTranslucent:YES];
-    
-    
+    [POAppearanceController setUpAppearance];
     
     self.window.rootViewController = navController;
-    
-    
-    
     
     self.window.backgroundColor = [UIColor whiteColor];
     [self.window makeKeyAndVisible];
