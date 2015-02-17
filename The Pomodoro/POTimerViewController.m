@@ -45,7 +45,9 @@
 
 
 -(void)updateTimerLabel {
+    //POTimerViewController *timerVC = [POTimerViewController new];
     self.timerLabel.text = [NSString stringWithFormat: @"%ld:%02ld", (long)[POTimer sharedInstance].minutes, (long)[POTimer sharedInstance].seconds];
+    //[self.navigationController pushViewController:timerVC animated:YES];
 }
 
 -(void)newRound{

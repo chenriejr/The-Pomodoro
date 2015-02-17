@@ -85,6 +85,27 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		6ACD49181A92CE2200F25455 /* Timer */ = {
+			isa = PBXGroup;
+			children = (
+				233F7F7D1A92A02500BF366C /* POTimer.h */,
+				233F7F7E1A92A02500BF366C /* POTimer.m */,
+				233F7F751A9299FE00BF366C /* POTimerViewController.h */,
+				233F7F761A9299FE00BF366C /* POTimerViewController.m */,
+				233F7F771A9299FE00BF366C /* POTimerViewController.xib */,
+			);
+			name = Timer;
+			sourceTree = "<group>";
+		};
+		6ACD49191A92CE3100F25455 /* Rounds */ = {
+			isa = PBXGroup;
+			children = (
+				233F7F7A1A929A1000BF366C /* PORoundsViewController.h */,
+				233F7F7B1A929A1000BF366C /* PORoundsViewController.m */,
+			);
+			name = Rounds;
+			sourceTree = "<group>";
+		};
 		7141B2D9193DBDFD0084F9F1 = {
 			isa = PBXGroup;
 			children = (
@@ -120,13 +141,8 @@
 			children = (
 				7141B2F4193DBDFD0084F9F1 /* POAppDelegate.h */,
 				7141B2F5193DBDFD0084F9F1 /* POAppDelegate.m */,
-				233F7F751A9299FE00BF366C /* POTimerViewController.h */,
-				233F7F761A9299FE00BF366C /* POTimerViewController.m */,
-				233F7F771A9299FE00BF366C /* POTimerViewController.xib */,
-				233F7F7A1A929A1000BF366C /* PORoundsViewController.h */,
-				233F7F7B1A929A1000BF366C /* PORoundsViewController.m */,
-				233F7F7D1A92A02500BF366C /* POTimer.h */,
-				233F7F7E1A92A02500BF366C /* POTimer.m */,
+				6ACD49191A92CE3100F25455 /* Rounds */,
+				6ACD49181A92CE2200F25455 /* Timer */,
 				7141B2F7193DBDFD0084F9F1 /* Images.xcassets */,
 				7141B2EC193DBDFD0084F9F1 /* Supporting Files */,
 			);

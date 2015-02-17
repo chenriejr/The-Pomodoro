@@ -15,23 +15,32 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
-
+    
+    //Setup the View controller to go into the Tab Controller
     POTimerViewController *timerViewController = [POTimerViewController new];
     PORoundsViewController *roundsViewController = [PORoundsViewController new];
-    
+
+   
+//Setup the Tab Bar Controller
     UITabBarController *tabBarController = [UITabBarController new];
     tabBarController.viewControllers = @[roundsViewController, timerViewController];
     
+    //Rounds Tab
     roundsViewController.tabBarItem.image = [UIImage imageNamed:@"rounds"];
     roundsViewController.tabBarItem.title = @"Rounds";
+    roundsViewController.tabBarController.title = @"Pomodoro Rounds";
     
+    //Timer Tab
     timerViewController.tabBarItem.image = [UIImage imageNamed:@"time"];
     timerViewController.tabBarItem.title = @"Timer";
+    
+    //Create a Navigation Controller
+    UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:tabBarController];
 
     
     
     
-    self.window.rootViewController = tabBarController;
+    self.window.rootViewController = navController;
     
     
     

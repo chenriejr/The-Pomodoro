@@ -8,6 +8,7 @@
 
 #import "PORoundsViewController.h"
 #import "POTimer.h"
+#import "POTimerViewController.h"
 
 @interface PORoundsViewController () <UITableViewDelegate, UITableViewDataSource>
 
@@ -17,6 +18,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.title = @"Pomodoro Rounds";
     
     self.tableView = [[UITableView alloc]initWithFrame:self.view.bounds];
     self.tableView.delegate = self;
@@ -49,7 +51,7 @@
     [POTimer sharedInstance].seconds = 0;
     
     [[NSNotificationCenter defaultCenter] postNotificationName:currentRoundNotifciation object:nil];
-    
+
     
 }
 

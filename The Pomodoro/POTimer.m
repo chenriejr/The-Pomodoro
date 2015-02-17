@@ -11,7 +11,7 @@ NSString * const TimerCompleteNotification = @"timerComplete";
 NSString * const SecondTickNotification = @"secondTick";
 
 @implementation POTimer
-+ (POTimer*)sharedInstance {
++ (POTimer *)sharedInstance {
     static POTimer *sharedInstance = nil;
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
@@ -28,7 +28,7 @@ NSString * const SecondTickNotification = @"secondTick";
 
 -(void)cancelTimer {
     self.isOn = NO;
-    [NSObject cancelPreviousPerformRequestsWithTarget:self selector:@selector(decreaseSecond) object:nil];
+    [NSObject cancelPreviousPerformRequestsWithTarget:self];
 }
 
 -(void)endTimer {
@@ -36,21 +36,22 @@ NSString * const SecondTickNotification = @"secondTick";
     [[NSNotificationCenter defaultCenter] postNotificationName:TimerCompleteNotification object:nil];
 }
 
--(void)decreaseSecond {
-    if (self.seconds > 0) {
+-(void)decreaseSecond
+{
+    if (self.seconds > 0)
+    {
         self.seconds--;
+        [[NSNotificationCenter defaultCenter] postNotificationName:SecondTickNotification object:nil];
     }
-    if (self.minutes > 0) {
-        if (self.seconds == 0) {
-            self.seconds = 59;
-            self.minutes--;
-        }
-    
-    [[NSNotificationCenter defaultCenter] postNotificationName:SecondTickNotification object:nil];
-    }else {
-        if (self.seconds == 0) {
-            [self endTimer];
-        }
+    else if (self.seconds == 0 && self.minutes > 0)
+    {
+        self.minutes--;
+        self.seconds = 59;
+        [[NSNotificationCenter defaultCenter] postNotificationName:SecondTickNotification object:nil];
+    }
+    else
+    {
+        [self endTimer];
     }
 }
 
