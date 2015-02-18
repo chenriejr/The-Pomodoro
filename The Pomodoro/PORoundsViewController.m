@@ -26,7 +26,6 @@
     self.tableView.dataSource = self;
     [self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:@"focus"];
     [self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:@"break"];
-    [[UINavigationBar appearance] setTintColor:[UIColor whiteColor]];
     [self registerForNotifications];
 
  
@@ -41,40 +40,59 @@
     if (indexPath.row % 2 == 0) {
         [self updateSubtitleText];
         UITableViewCell *cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:@"focus"];
-        cell.textLabel.text = [NSString stringWithFormat: @"Round %ld                    %@ min", (long)indexPath.row + 1, [self roundTimes][indexPath.row], (long)[POTimer sharedInstance].minutes, (long)[POTimer sharedInstance].seconds];
+        cell.textLabel.text = [NSString stringWithFormat: @"Round %ld                    %@ min", (long)indexPath.row + 1, [self roundTimes][indexPath.row]];
         cell.textLabel.font = [UIFont fontWithName:@"Futura" size:18.0];
+        cell.detailTextLabel.font = [UIFont fontWithName:@"Futura" size:12];
+        cell.detailTextLabel.text = @"";
         cell.imageView.image = [UIImage imageNamed:@"Worker"];
                 
     return cell;
     }
     else {
-        UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"break"];
+        UITableViewCell *cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:@"break"];
         cell.textLabel.text = [NSString stringWithFormat: @"Round %ld                    %@ min", (long)indexPath.row + 1, [self roundTimes][indexPath.row]];
         cell.textLabel.font = [UIFont fontWithName:@"Futura" size:18.0];
+        cell.detailTextLabel.font = [UIFont fontWithName:@"Futura" size:12];
+        cell.detailTextLabel.text = @"";
         cell.imageView.image = [UIImage imageNamed:@"Frisbee"];
         return cell;
     }
 }
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    if ([POTimer sharedInstance].isOn == NO) {
     [[POTimer sharedInstance] cancelTimer];
     self.currentRound = indexPath.row;
     self.cellIndexPath = indexPath;
     [self roundSelected];
-    self.tabBarController.selectedViewController = [self.tabBarController.viewControllers objectAtIndex:1];
-    
+        
+        self.tabBarController.selectedViewController = [self.tabBarController.viewControllers objectAtIndex:1];
+    }
+    else {
+        self.tabBarController.selectedViewController = [self.tabBarController.viewControllers objectAtIndex:1];
+
+    }
 }
+
+-(void)tableView:(UITableView *)tableView didDeselectRowAtIndexPath:(NSIndexPath *)indexPath {
+    UITableViewCell *cell = [self.tableView cellForRowAtIndexPath:self.cellIndexPath];
+    cell.detailTextLabel.text = @"";
+     }
 
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     return 56.5;
 }
 
+
 -(void)roundSelected{
-    [POTimer sharedInstance].minutes = [[self roundTimes][self.currentRound]integerValue];
-    [POTimer sharedInstance].seconds = 0;
+    if ([POTimer sharedInstance].isOn == NO) {
+        
+        [POTimer sharedInstance].minutes = [[self roundTimes][self.currentRound]integerValue];
+        [POTimer sharedInstance].seconds = 0;
+    
     
     [[NSNotificationCenter defaultCenter] postNotificationName:currentRoundNotifciation object:nil];
-
+    }
     
 }
 
