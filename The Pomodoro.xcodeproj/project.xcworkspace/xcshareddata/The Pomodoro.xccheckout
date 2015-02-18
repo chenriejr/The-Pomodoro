@@ -5,13 +5,13 @@
 	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
 	<false/>
 	<key>IDESourceControlProjectIdentifier</key>
-	<string>6368585D-9858-4285-A1C2-AFC63F26AABD</string>
+	<string>EBA3C80A-47FC-4F05-A84C-47CBEEC59D58</string>
 	<key>IDESourceControlProjectName</key>
 	<string>The Pomodoro</string>
 	<key>IDESourceControlProjectOriginsDictionary</key>
 	<dict>
 		<key>DA56D6306125B2D98F7B365046D0DFB4912B3F35</key>
-		<string>https://github.com/chenriejr/The-Pomodoro.git</string>
+		<string>https://github.com/jakeherrmann04/The-Pomodoro.git</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
 	<string>The Pomodoro.xcodeproj</string>
@@ -21,7 +21,7 @@
 		<string>../..</string>
 	</dict>
 	<key>IDESourceControlProjectURL</key>
-	<string>https://github.com/chenriejr/The-Pomodoro.git</string>
+	<string>https://github.com/jakeherrmann04/The-Pomodoro.git</string>
 	<key>IDESourceControlProjectVersion</key>
 	<integer>111</integer>
 	<key>IDESourceControlProjectWCCIdentifier</key>
