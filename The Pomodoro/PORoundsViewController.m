@@ -33,7 +33,7 @@
 }
 
 -(NSArray *)roundTimes{
-    return @[@25, @5, @25, @5, @25, @5, @25, @15];
+    return @[@25, @1, @25, @5, @25, @5, @25, @15];
 }
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
@@ -64,6 +64,7 @@
     [[POTimer sharedInstance] cancelTimer];
     self.currentRound = indexPath.row;
     self.cellIndexPath = indexPath;
+	
     [self roundSelected];
         
         self.tabBarController.selectedViewController = [self.tabBarController.viewControllers objectAtIndex:1];
@@ -131,14 +132,5 @@
     // Dispose of any resources that can be recreated.
 }
 
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 @end
